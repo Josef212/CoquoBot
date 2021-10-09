@@ -4,10 +4,12 @@ import credentials
 from order import Order
 from order_manager import OrderManager
 from menu import Menu
-from command import Command
+from localization import Localization
 
 from telegram import Update
 from telegram.ext import Updater, MessageHandler, Filters
+
+from commands.cmd_start import *
 
 class App(Updater):
     def __init__(self, token: str, logger: logging.Logger):
@@ -17,13 +19,14 @@ class App(Updater):
 
         self.__order_manager = OrderManager()
         self.menu = Menu(self)
+        self.localiztion = Localization()
 
         self.__create_commands()
         self.__inited = False
 
     def set_up(self) -> None:
         self.dispatcher.add_error_handler(lambda u, c: self.__error_handler(u, c))
-        self.dispatcher.add_handler(MessageHandler(Filters.text, lambda u, c: self.__echo(u, c)))
+        #self.dispatcher.add_handler(MessageHandler(Filters.text, lambda u, c: self.__echo(u, c)))
 
         for cmd in self.__cmds:
             self.dispatcher.add_handler(cmd.get_command())
@@ -82,7 +85,7 @@ class App(Updater):
     def __create_commands(self) -> None:
         # Probably with decorators I could get all commands instead of manually adding them
         self.__cmds = [
-
+            CmdStart(self),
         ]
 
 

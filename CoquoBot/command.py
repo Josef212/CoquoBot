@@ -1,10 +1,9 @@
 import abc
 
-from app import App
 from telegram.ext import CommandHandler
 
 class Command(metaclass=abc.ABCMeta):
-    def __init__(self, app: App):
+    def __init__(self, app):
         self.app = app
         self.name = "unasigned"
         self.cmd = None
