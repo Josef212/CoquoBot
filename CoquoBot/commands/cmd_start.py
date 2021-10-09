@@ -9,6 +9,6 @@ class CmdStart(Command):
         self.name = ["start"]
 
     def execute(self, update: Update, ctx) -> None:
-        lang = update.message.from_user.language_code
+        lang = self.get_user_lang_from_update(update)
         msg = self.app.localiztion.get_text(lang, LocKeys.START_MSG)
-        update.message.reply_text(msg)
+        self.reply_message(update, msg)
