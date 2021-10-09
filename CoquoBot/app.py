@@ -57,19 +57,19 @@ class App(Updater):
     def __echo(self, update: Update, ctx):
         update.message.reply_text(update.message.text)
     
-    def get_order(self, chat_id: str) -> Order:
+    def get_order(self, chat_id: int) -> Order:
         return self.__order_manager.get_order(chat_id)
     
-    def reset_order(self, chat_id: str) -> None:
+    def reset_order(self, chat_id: int) -> None:
         self.__order_manager.reset_order(chat_id)
 
-    def add_to_order(self, chat_id: str, user: str, item: str, amount: int) -> None:
+    def add_to_order(self, chat_id: int, user: str, item: str, amount: int) -> None:
         self.__order_manager.get_order(chat_id).add_to_order(user, item, amount)
     
-    def get_user_order(self, chat_id: str, user: str) -> dict:
+    def get_user_order(self, chat_id: int, user: str) -> dict:
         return self.__order_manager.get_order(chat_id).get_user_order(user)
     
-    def get_full_order(self, chat_id: str) -> dict:
+    def get_full_order(self, chat_id: int) -> dict:
         return self.__order_manager.get_order(chat_id).get_full_order()
     
     def get_all_commands(self) -> list:
@@ -77,7 +77,7 @@ class App(Updater):
     
     def get_command(self, cmd_name: str) -> Command:
         for cmd in self.__cmds:
-            if cmd.name == cmd_name:
+            if cmd.name == cmd_name or cmd_name in cmd.name:
                 return cmd
             
         return None
