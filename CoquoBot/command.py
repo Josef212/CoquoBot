@@ -1,20 +1,22 @@
 import abc
+
+from app import App
 from telegram.ext import CommandHandler
 
 class Command(metaclass=abc.ABCMeta):
-    def __init__(self, app):
+    def __init__(self, app: App):
         self.app = app
         self.name = "unasigned"
         self.cmd = None
 
-    def get_command(self):
+    def get_command(self) -> CommandHandler:
         if self.cmd == None:
             self.cmd = CommandHandler(self.name, lambda u, c: self.execute(u, c))
         
         return self.cmd
     
     @abc.abstractmethod
-    def execute(self, update, ctx):
+    def execute(self, update, ctx) -> None:
         pass
 
     def get_help(self):

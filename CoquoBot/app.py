@@ -2,6 +2,7 @@ import logging
 import credentials
 
 from order import Order
+from order_manager import OrderManager
 from menu import Menu
 from command import Command
 
@@ -14,7 +15,7 @@ class App(Updater):
         self.log = logger
         self.info('# App init -----------')
 
-        self.order = Order()
+        self.__order_manager = OrderManager()
         self.menu = Menu(self)
 
         self.__create_commands()
@@ -52,6 +53,31 @@ class App(Updater):
     
     def __echo(self, update: Update, ctx):
         update.message.reply_text(update.message.text)
+    
+    def get_order(self, chat_id: str) -> Order:
+        return self.__order_manager.get_order(chat_id)
+    
+    def reset_order(self, chat_id: str) -> None:
+        self.__order_manager.reset_order(chat_id)
+
+    def add_to_order(self, chat_id: str, user: str, item: str, amount: int) -> None:
+        self.__order_manager.get_order(chat_id).add_to_order(user, item, amount)
+    
+    def get_user_order(self, chat_id: str, user: str) -> dict:
+        return self.__order_manager.get_order(chat_id).get_user_order(user)
+    
+    def get_full_order(self, chat_id: str) -> dict:
+        return self.__order_manager.get_order(chat_id).get_full_order()
+    
+    def get_all_commands(self) -> list:
+        return self.__cmds
+    
+    def get_command(self, cmd_name: str) -> Command:
+        for cmd in self.__cmds:
+            if cmd.name == cmd_name:
+                return cmd
+            
+        return None
     
     def __create_commands(self) -> None:
         # Probably with decorators I could get all commands instead of manually adding them
