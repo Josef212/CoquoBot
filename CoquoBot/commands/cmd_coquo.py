@@ -28,7 +28,7 @@ class CmdCoquo(Command):
         lang = self.get_user_lang_from_query(query)
         args = self.get_inline_btn_args_from_query(query)
         chat_id = self.get_chat_id(query)
-        user = args[1]
+        user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
         action = args[2]
 
         loc = self.app.localization
@@ -45,13 +45,18 @@ class CmdCoquo(Command):
             msg = loc.get_text(lang, LocKeys.ORDER_RESET_DONE)
             self.query_edit_message(query, msg, None)
         elif action == LocKeys.BTN_ORDER:
-            pass
+            cmd = self.app.get_command('order')
+            msg = cmd.get_cmd_msg(lang)
+            markup = cmd.build_order_keyboard(user, lang)
+            self.query_reply_message(query, msg, markup)
         elif action == LocKeys.BTN_EDIT_ORDER:
             pass
         elif action == LocKeys.BTN_GET_MY_ORDER:
-            pass
+            msg = self.app.get_command('get_my_order').get_user_order_text(chat_id, user, lang)
+            self.query_reply_message(query, msg)
         elif action == LocKeys.BTN_GET_FULL_ORDER:
-            pass
+            msg = self.app.get_command('get_full_order').get_full_order_text(chat_id, lang)
+            self.query_reply_message(query, msg)
         elif action == LocKeys.BTN_FINISH:
             msg = loc.get_text(lang, LocKeys.COQUO_FINISHED)
             self.query_edit_message(query, msg, None)
