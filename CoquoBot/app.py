@@ -10,6 +10,8 @@ from telegram import Update
 from telegram.ext import Updater, MessageHandler, Filters
 
 from commands.cmd_start import *
+from commands.cmd_coquo import *
+from commands.cmd_menu import *
 
 class App(Updater):
     def __init__(self, token: str, logger: logging.Logger):
@@ -19,7 +21,7 @@ class App(Updater):
 
         self.__order_manager = OrderManager()
         self.menu = Menu(self)
-        self.localiztion = Localization()
+        self.localization = Localization()
 
         self.__create_commands()
         self.__inited = False
@@ -86,6 +88,9 @@ class App(Updater):
         # Probably with decorators I could get all commands instead of manually adding them
         self.__cmds = [
             CmdStart(self),
+            CmdCoquo(self),
+            CmdWeb(self),
+            CmdMenu(self),
         ]
 
 
