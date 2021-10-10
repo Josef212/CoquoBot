@@ -12,6 +12,7 @@ from telegram.ext import Updater, MessageHandler, Filters
 from commands.cmd_start import *
 from commands.cmd_coquo import *
 from commands.cmd_menu import *
+from commands.cmd_reset_order import *
 
 class App(Updater):
     def __init__(self, token: str, logger: logging.Logger):
@@ -91,6 +92,7 @@ class App(Updater):
             CmdCoquo(self),
             CmdWeb(self),
             CmdMenu(self),
+            CmdResetOrder(self),
         ]
 
 
