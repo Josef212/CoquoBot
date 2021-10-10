@@ -11,5 +11,6 @@ ES = {
 }
 
 EN = {
-    LocKeys.START_MSG: 'Starting the bot...'
+    LocKeys.START_MSG: 'Starting the bot...',
+    LocKeys.COQUO_OPTIONS: 'How can CoquoBot help you?'
 }
