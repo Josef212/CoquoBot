@@ -1,5 +1,4 @@
 from command import Command
-from loc_keys import LocKeys
 
 from telegram import Update
 

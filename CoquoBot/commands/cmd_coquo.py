@@ -54,10 +54,8 @@ class CmdCoquo(Command):
             pass
         elif action == LocKeys.BTN_FINISH:
             msg = loc.get_text(lang, LocKeys.COQUO_FINISHED)
-            keyboard = None
-            self.query_edit_message(query, msg, keyboard)
+            self.query_edit_message(query, msg, None)
         
-    
     def __create_markup(self, user: str, lang: str):
         key = self.__cbk_key
         loc = self.app.localization
