@@ -32,9 +32,9 @@ class CmdCoquo(Command):
         action = args[2]
 
         loc = self.app.localization
+        # TODO: Use something like get_command_by_type
 
         if action == LocKeys.BTN_MENU:
-            # TODO: Use something like get_command_by_type
             msg = self.app.get_command('menu').get_menu_text()
             self.query_reply_message(query, msg)
         elif action == LocKeys.BTN_WEB:
@@ -50,7 +50,10 @@ class CmdCoquo(Command):
             markup = cmd.build_order_keyboard(user, lang)
             self.query_reply_message(query, msg, markup)
         elif action == LocKeys.BTN_EDIT_ORDER:
-            pass
+            cmd = self.app.get_command('edit_order')
+            msg = cmd.get_cmd_msg(chat_id, lang, user)
+            markup = cmd.build_edit_order_keyboard(chat_id, user, lang)
+            self.query_reply_message(query, msg, markup)
         elif action == LocKeys.BTN_GET_MY_ORDER:
             msg = self.app.get_command('get_my_order').get_user_order_text(chat_id, user, lang)
             self.query_reply_message(query, msg)

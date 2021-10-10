@@ -15,6 +15,7 @@ from commands.cmd_menu import *
 from commands.cmd_reset_order import *
 from commands.cmd_get_order import *
 from commands.cmd_order import *
+from commands.cmd_edit_order import *
 
 class App(Updater):
     def __init__(self, token: str, logger: logging.Logger):
@@ -71,6 +72,9 @@ class App(Updater):
     def add_to_order(self, chat_id: int, user: str, item: str, amount: int) -> None:
         self.__order_manager.get_order(chat_id).add_to_order(user, item, amount)
     
+    def user_has_any_order(self, chat_id: int, user: str) -> bool:
+        return self.__order_manager.user_has_any_order(chat_id, user)
+
     def get_user_order(self, chat_id: int, user: str) -> dict:
         return self.__order_manager.get_order(chat_id).get_user_order(self.menu, user)
     
@@ -99,6 +103,7 @@ class App(Updater):
             CmdGetOrderFor(self),
             CmdGetFullOrder(self),
             CmdOrder(self),
+            CmdEditOrder(self),
         ]
 
 
