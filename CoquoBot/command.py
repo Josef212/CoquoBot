@@ -1,5 +1,7 @@
 import abc
+import json
 
+from telegram import Update, CallbackQuery, Message
 from telegram.ext import CommandHandler
 
 class Command(metaclass=abc.ABCMeta):
@@ -15,26 +17,44 @@ class Command(metaclass=abc.ABCMeta):
         return self.cmd
     
     @abc.abstractmethod
-    def execute(self, update, ctx) -> None:
+    def execute(self, update: Update, ctx) -> None:
         pass
 
     def get_help(self):
         return f'{self.name}: {self.name}'
     
-    def get_username_from_update(self, update) -> str:
-        return update.message.from_user.user_name
+    def get_username_from_update(self, update: Update) -> str:
+        return update.message.from_user.username
+    
+    def get_username_from_query(self, query: CallbackQuery) -> str:
+        return query.from_user.username
 
-    def get_user_lang_from_update(self, update) -> str:
+    def get_user_lang_from_update(self, update: Update) -> str:
         return update.message.from_user.language_code
     
-    def get_chat_id_from_update(self, update) -> int:
-        return update.message.chat.id
+    def get_user_lang_from_query(self, query: CallbackQuery) -> str:
+        return query.from_user.language_code
     
-    def reply_message(self, update, msg: str) -> None:
-        update.message.reply_text(msg)
+    def get_chat_id(self, ctx) -> int:
+        return ctx.message.chat.id
     
-    def edit_message(self, query, msg: str) -> None:
-        query.message.edit_message_text(msg)
+    def update_reply_message(self, update: Update, msg: str, markup=None) -> None:
+        update.message.reply_text(msg, reply_markup=markup)
+
+    def query_reply_message(self, query: CallbackQuery, msg: str, markup=None) -> None:
+        query.message.reply_text(msg, reply_markup=markup)
+    
+    def query_edit_message(self, query: CallbackQuery, msg: str, markup=None) -> None:
+        query.edit_message_text(msg, reply_markup=markup)
+    
+    def get_inline_btn_args_from_query(self, query) -> list:
+        return query.data.split('#')
+
+    def inline_btn(self, text: str, cbk_data: str = ''):
+        return { 'text': text, 'callback_data': cbk_data }
+
+    def build_keyboard(self, keyboard: list):
+        return json.dumps({ 'inline_keyboard': keyboard })
 
 # Command implementation example
 class TestCmd(Command):
