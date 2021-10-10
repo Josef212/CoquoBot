@@ -61,6 +61,20 @@ class Order:
 
         return ret
 
+    def user_has_any_order(self, user: str) -> bool:
+        if user not in self.order:
+            return False
+
+        user_order = self.order[user]
+        if len(user_order) == 0:
+            return False
+        
+        for item in user_order:
+            if user_order[item] > 0:
+                return True
+        
+        return False
+
     def __get_cart_price(self, cart: dict, menu: Menu) -> float:
         total_price = 0.0
 

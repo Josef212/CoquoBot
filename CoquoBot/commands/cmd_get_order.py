@@ -8,13 +8,16 @@ class CmdGetOrderBase(Command):
         super().__init__(app)
     
     def format_order(self, order: dict, title_key: str, lang: str) -> str:
+        title = self.app.localization.get_text(lang, title_key)
+        return self.format_order_with_title(order, title, lang)
+
+    def format_order_with_title(self, order: dict, title: str, lang: str) -> str:
         cart = order['cart']
         price = order['total']
 
         loc = self.app.localization
         menu = self.app.menu
 
-        title = loc.get_text(lang, title_key)
         missing_any_price = False
         msg = f'{title}\n'
 

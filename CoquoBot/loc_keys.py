@@ -20,6 +20,9 @@ class LocKeys:
     ORDER_FINISH_TITLE='ORDER_FINISH_TITLE'
     ORDER_MSG='ORDER_MSG'
 
+    # Cmd edit order
+    EDIT_ORDER_UPDATED='EDIT_ORDER_UPDATED'
+
     # Btn
     BTN_MENU='BTN_MENU'
     BTN_WEB='BTN_WEB'
