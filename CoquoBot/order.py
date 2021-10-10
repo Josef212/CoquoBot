@@ -20,12 +20,6 @@ class Order:
         if user_order[item] < 0:
             user_order[item] = 0
 
-    def get_user_order(self, user: str) -> dict:
-        if user not in self.order:
-            return {}
-        
-        return self.order[user]
-
     def get_full_order(self, menu: Menu) -> dict:
         ret = {}
         cart = {}

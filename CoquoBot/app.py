@@ -13,6 +13,8 @@ from commands.cmd_start import *
 from commands.cmd_coquo import *
 from commands.cmd_menu import *
 from commands.cmd_reset_order import *
+from commands.cmd_get_order import *
+from commands.cmd_order import *
 
 class App(Updater):
     def __init__(self, token: str, logger: logging.Logger):
@@ -70,7 +72,7 @@ class App(Updater):
         self.__order_manager.get_order(chat_id).add_to_order(user, item, amount)
     
     def get_user_order(self, chat_id: int, user: str) -> dict:
-        return self.__order_manager.get_order(chat_id).get_user_order(user)
+        return self.__order_manager.get_order(chat_id).get_user_order(self.menu, user)
     
     def get_full_order(self, chat_id: int) -> dict:
         return self.__order_manager.get_order(chat_id).get_full_order()
@@ -93,6 +95,10 @@ class App(Updater):
             CmdWeb(self),
             CmdMenu(self),
             CmdResetOrder(self),
+            CmdGetMyOrder(self),
+            CmdGetOrderFor(self),
+            CmdGetFullOrder(self),
+            CmdOrder(self),
         ]
 
 
