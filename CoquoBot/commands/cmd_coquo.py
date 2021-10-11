@@ -46,7 +46,7 @@ class CmdCoquo(Command):
             self.query_edit_message(query, msg, None)
         elif action == LocKeys.BTN_ORDER:
             cmd = self.app.get_command('order')
-            msg = cmd.get_cmd_msg(lang)
+            msg = cmd.get_cmd_msg(lang, user)
             markup = cmd.build_order_keyboard(user, lang)
             self.query_reply_message(query, msg, markup)
         elif action == LocKeys.BTN_EDIT_ORDER:

@@ -79,7 +79,7 @@ class App(Updater):
         return self.__order_manager.get_order(chat_id).get_user_order(self.menu, user)
     
     def get_full_order(self, chat_id: int) -> dict:
-        return self.__order_manager.get_order(chat_id).get_full_order()
+        return self.__order_manager.get_order(chat_id).get_full_order(self.menu)
     
     def get_all_commands(self) -> list:
         return self.__cmds

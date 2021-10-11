@@ -6,12 +6,8 @@ from telegram import Update
 class CmdGetOrderBase(Command):
     def __init__(self, app):
         super().__init__(app)
-    
-    def format_order(self, order: dict, title_key: str, lang: str) -> str:
-        title = self.app.localization.get_text(lang, title_key)
-        return self.format_order_with_title(order, title, lang)
 
-    def format_order_with_title(self, order: dict, title: str, lang: str) -> str:
+    def format_order(self, order: dict, title: str, lang: str) -> str:
         cart = order['cart']
         price = order['total']
 
@@ -40,11 +36,13 @@ class CmdGetOrderBase(Command):
     
     def get_full_order_text(self, chat_id: int, lang: str) -> str:
         full_order = self.app.get_full_order(chat_id)
-        return self.format_order(full_order, LocKeys.TITLE_FULL_ORDER, lang)
+        title = self.app.localization.get_text(lang, LocKeys.GET_ORDER_TITLE_FULL_ORDER)
+        return self.format_order(full_order, title, lang)
 
     def get_user_order_text(self, chat_id: int, user: str, lang: str) -> str:
-        order = self.app.get_user_order(chat_id, user)
-        return self.format_order(order, LocKeys.GET_ORDER_USERS, lang)
+        user_order = self.app.get_user_order(chat_id, user)
+        title = self.app.localization.get_text_format(lang, LocKeys.GET_ORDER_TITLE_GET_USERS, user)
+        return self.format_order(user_order, title, lang)
     
 class CmdGetOrderFor(CmdGetOrderBase):
     def __init__(self, app):

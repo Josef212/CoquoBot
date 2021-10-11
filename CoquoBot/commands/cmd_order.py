@@ -18,13 +18,13 @@ class CmdOrder(Command):
         user = self.get_username_from_update(update)
         lang = self.get_user_lang_from_update(update)
 
-        msg = self.get_cmd_msg(lang)
+        msg = self.get_cmd_msg(lang, user)
         markup = self.build_order_keyboard(user, lang)
 
         self.update_reply_message(update, msg, markup)
 
-    def get_cmd_msg(self, lang: str) -> str:
-        return self.app.localization.get_text(lang, LocKeys.ORDER_MSG)
+    def get_cmd_msg(self, lang: str, user: str) -> str:
+        return self.app.localization.get_text_format(lang, LocKeys.ORDER_MSG, user)
 
     def build_order_keyboard(self, user: str, lang: str):
         # TODO: Must add pagination to this keyboard
@@ -53,8 +53,8 @@ class CmdOrder(Command):
         lang = self.get_user_lang_from_query(query)
 
         current_text = query.message.text
-        text = self.app.localization.get_text_format(lang, LocKeys.ORDER_ITEM_ADDED, item, user)
-        current_text += f'  - {text}'
+        text = self.app.localization.get_text_format(lang, LocKeys.ORDER_ITEM_ADDED, item)
+        current_text += f'\n  - {text}'
 
         self.app.add_to_order(chat_id, user, item, 1)
         # TODO: Markup replied should take into account pagination
@@ -69,8 +69,8 @@ class CmdOrder(Command):
         chat_id = self.get_chat_id(query)
         lang = self.get_user_lang_from_query(query)
 
-        msg = self.app.get_command('get_order_for').get_user_order_text(chat_id, user, lang)
-        text = self.app.localization.get_text(lang, LocKeys.ORDER_FINISH_TITLE)
-        msg = f'{text}\n  {msg}'
+        order_str = self.app.get_command('get_order_for').get_user_order_text(chat_id, user, lang)
+        text = self.app.localization.get_text_format(lang, LocKeys.ORDER_FINISH_TITLE, user)
+        msg = f'{text}\n  {order_str}'
 
         self.query_edit_message(query, msg, None)

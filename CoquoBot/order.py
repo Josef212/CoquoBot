@@ -17,8 +17,8 @@ class Order:
 
         user_order[item] += amount
 
-        if user_order[item] < 0:
-            user_order[item] = 0
+        if user_order[item] <= 0:
+            del user_order[item]
 
     def get_full_order(self, menu: Menu) -> dict:
         ret = {}
