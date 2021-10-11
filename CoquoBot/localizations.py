@@ -4,41 +4,41 @@ from loc_keys import LocKeys
 
 CAT = {
     # Cmd start
-    LocKeys.START_MSG: 'Engegant el bot...',
+    LocKeys.START_MSG: 'Arrancant el bot...',
 
     # Cmd coquo
-    LocKeys.COQUO_OPTIONS: 'How can CoquoBot help you?',
-    LocKeys.COQUO_FINISHED: '',
+    LocKeys.COQUO_OPTIONS: 'Com et pot ajudar el CoquoBot?',
+    LocKeys.COQUO_FINISHED: 'Gràcies per utilitzar CoquoBot :D',
 
     # Cmd get order
-    LocKeys.GET_ORDER_TITLE_FULL_ORDER: '',
-    LocKeys.GET_ORDER_MISSING_PRICE: '',
-    LocKeys.GET_ORDER_TOTAL_PRICE: '',
-    LocKeys.GET_ORDER_TITLE_GET_USERS: '',
-    LocKeys.GET_ORDER_MISSING_PRICE: '',
-    LocKeys.GET_ORDER_TOO_MUCH_ARGS: '',
+    LocKeys.GET_ORDER_TITLE_FULL_ORDER: 'Total de la comanda:',
+    LocKeys.GET_ORDER_TITLE_GET_USERS: 'Comanda de @{0}:',
+    LocKeys.GET_ORDER_MISSING_PRICE: '[NOTA]: Un o varis elements no tenen preu!',
+    LocKeys.GET_ORDER_TOTAL_PRICE: 'Preu total',
+    LocKeys.GET_ORDER_MISSING_ARGS: 'Nombre d\'arguments invàlid. Falta el nom de l\'usuari',
+    LocKeys.GET_ORDER_TOO_MUCH_ARGS: 'Nombre d\'arguments invàlid. Massa arguments, només és necessari el nom d\'usuari',
 
     # Cmd order
-    LocKeys.ORDER_FINISH_TITLE: '',
-    LocKeys.ORDER_MSG: '',
-    LocKeys.ORDER_ITEM_ADDED: '',
+    LocKeys.ORDER_FINISH_TITLE: 'Comanda per @{0} registrada:',
+    LocKeys.ORDER_MSG: 'Demanant per @{0}:',
+    LocKeys.ORDER_ITEM_ADDED: '{0} afegit a la comanda',
 
     # Cmd reset order 
-    LocKeys.ORDER_RESET_DONE: '',
+    LocKeys.ORDER_RESET_DONE: 'La comanda per aquest grup s\'ha reiniciat.',
 
     # Cmd edit order
-    LocKeys.EDIT_ORDER_TITLE_UPDATED: '',
-    LocKeys.EDIT_ORDER_USER_ORDER: '',
-    LocKeys.EDIT_ORDER_EMPTY: '',
+    LocKeys.EDIT_ORDER_TITLE_UPDATED: 'La comanda per @{0} s\'ha actualitzat',
+    LocKeys.EDIT_ORDER_USER_ORDER: 'Modificant la comanda de @{0}',
+    LocKeys.EDIT_ORDER_EMPTY: 'No s\'han afegit elements a la teva comanda. Utilitza [order] per iniciar una comanda',
 
     # Btn
-    LocKeys.BTN_MENU: 'Menu',
-    LocKeys.BTN_WEB: 'Web menu',
-    LocKeys.BTN_ORDER: 'Place order',
-    LocKeys.BTN_EDIT_ORDER: 'Edit order',
-    LocKeys.BTN_GET_FULL_ORDER: 'Full order',
-    LocKeys.BTN_GET_MY_ORDER: 'My order',
-    LocKeys.BTN_FINISH: 'Finish :)',
+    LocKeys.BTN_MENU: 'Menú',
+    LocKeys.BTN_WEB: 'Menú Web',
+    LocKeys.BTN_ORDER: 'Fer comanda',
+    LocKeys.BTN_EDIT_ORDER: 'Modificar comanda',
+    LocKeys.BTN_GET_FULL_ORDER: 'Llista completa',
+    LocKeys.BTN_GET_MY_ORDER: 'La meva comanda',
+    LocKeys.BTN_FINISH: 'Tancar :)',
 
     LocKeys.BTN_RESET_ORDER: '-Reset full order-',
 }
@@ -48,38 +48,38 @@ ES = {
     LocKeys.START_MSG: 'Arrancando el bot...',
 
     # Cmd coquo
-    LocKeys.COQUO_OPTIONS: 'How can CoquoBot help you?',
-    LocKeys.COQUO_FINISHED: '',
+    LocKeys.COQUO_OPTIONS: '¿Como CoquoBot te puede ayudar?',
+    LocKeys.COQUO_FINISHED: 'Gracias por usar CoquoBot :D',
 
     # Cmd get order
-    LocKeys.GET_ORDER_TITLE_FULL_ORDER: '',
-    LocKeys.GET_ORDER_MISSING_PRICE: '',
-    LocKeys.GET_ORDER_TOTAL_PRICE: '',
-    LocKeys.GET_ORDER_TITLE_GET_USERS: '',
-    LocKeys.GET_ORDER_MISSING_PRICE: '',
-    LocKeys.GET_ORDER_TOO_MUCH_ARGS: '',
+    LocKeys.GET_ORDER_TITLE_FULL_ORDER: 'Total del pedido:',
+    LocKeys.GET_ORDER_TITLE_GET_USERS: 'Pedido de @{0}:',
+    LocKeys.GET_ORDER_MISSING_PRICE: '[NOTA]: Uno o varios elementos no tienen precio!',
+    LocKeys.GET_ORDER_TOTAL_PRICE: 'Precio total',
+    LocKeys.GET_ORDER_MISSING_ARGS: 'Número de argumentos invalido. Falta el nombre de usuario',
+    LocKeys.GET_ORDER_TOO_MUCH_ARGS: 'Número de argumentos invalido. Demasiados argumentos, sólo es necesario el nombre del usuario',
 
     # Cmd order
-    LocKeys.ORDER_FINISH_TITLE: '',
-    LocKeys.ORDER_MSG: '',
-    LocKeys.ORDER_ITEM_ADDED: '',
+    LocKeys.ORDER_FINISH_TITLE: 'Comanda para @{0} registrada:',
+    LocKeys.ORDER_MSG: 'Pidiendo para @{0}:',
+    LocKeys.ORDER_ITEM_ADDED: '{0} añadido a la comanda',
 
     # Cmd reset order 
-    LocKeys.ORDER_RESET_DONE: '',
+    LocKeys.ORDER_RESET_DONE: 'El pedido para este grupo se ha reiniciado',
 
     # Cmd edit order
-    LocKeys.EDIT_ORDER_TITLE_UPDATED: '',
-    LocKeys.EDIT_ORDER_USER_ORDER: '',
-    LocKeys.EDIT_ORDER_EMPTY: '',
+    LocKeys.EDIT_ORDER_TITLE_UPDATED: 'El pedido de @{0} se ha actualizado',
+    LocKeys.EDIT_ORDER_USER_ORDER: 'Modificando pedido de @{0}',
+    LocKeys.EDIT_ORDER_EMPTY: 'No se han añadido elementos al pedido. Usa [order] para iniciar un pedido',
 
     # Btn
-    LocKeys.BTN_MENU: 'Menu',
-    LocKeys.BTN_WEB: 'Web menu',
-    LocKeys.BTN_ORDER: 'Place order',
-    LocKeys.BTN_EDIT_ORDER: 'Edit order',
-    LocKeys.BTN_GET_FULL_ORDER: 'Full order',
-    LocKeys.BTN_GET_MY_ORDER: 'My order',
-    LocKeys.BTN_FINISH: 'Finish :)',
+    LocKeys.BTN_MENU: 'Menú',
+    LocKeys.BTN_WEB: 'Menú Web',
+    LocKeys.BTN_ORDER: 'Hacer pedido',
+    LocKeys.BTN_EDIT_ORDER: 'Modificar pedido',
+    LocKeys.BTN_GET_FULL_ORDER: 'Lista completa',
+    LocKeys.BTN_GET_MY_ORDER: 'Mi pedido',
+    LocKeys.BTN_FINISH: 'Cerrar :)',
 
     LocKeys.BTN_RESET_ORDER: '-Reset full order-',
 }
@@ -90,7 +90,7 @@ EN = {
 
     # Cmd coquo
     LocKeys.COQUO_OPTIONS: 'How can CoquoBot help you?',
-    LocKeys.COQUO_FINISHED: 'Thank you for using Coquo bot :D',
+    LocKeys.COQUO_FINISHED: 'Thank you for using CoquoBot :D',
 
     # Cmd get order
     LocKeys.GET_ORDER_TITLE_FULL_ORDER: 'Total order:',

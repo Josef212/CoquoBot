@@ -33,8 +33,7 @@ class Localization:
         self.__teardown = english
         self.__dictionaries = {
             'cat': Dictionary(locs.CAT),
-            # TODO: Add back es
-            #'es': Dictionary(locs.ES),
+            'es': Dictionary(locs.ES),
             'en': english,
             'en-US': english,
             'en-GB': english,

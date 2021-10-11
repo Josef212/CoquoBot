@@ -103,6 +103,6 @@ class CmdEditOrder(Command):
         get_order_cmd = self.app.get_command('get_order_for')
         full_order = self.app.get_user_order(chat_id, user)
         title = self.app.localization.get_text_format(lang, LocKeys.EDIT_ORDER_TITLE_UPDATED, user)
-        msg = get_order_cmd.format_order_with_title(full_order, title, lang)
+        msg = get_order_cmd.format_order(full_order, title, lang)
 
         self.query_edit_message(query, msg, None)
