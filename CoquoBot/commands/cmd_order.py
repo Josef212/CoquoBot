@@ -52,7 +52,7 @@ class CmdOrder(Command):
         chat_id = self.get_chat_id(query)
         lang = self.get_user_lang_from_query(query)
 
-        current_text = query.messate.text
+        current_text = query.message.text
         text = self.app.localization.get_text_format(lang, LocKeys.ORDER_ITEM_ADDED, item, user)
         current_text += f'  - {text}'
 
