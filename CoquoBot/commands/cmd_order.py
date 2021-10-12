@@ -48,8 +48,9 @@ class CmdOrder(Command):
             
             keyboard.append(row)
 
-        finish = self.app.localization.get_text(lang, LocKeys.BTN_FINISH)
-        keyboard.append([self._inline_btn(finish, f'{self.__finish_key}{user}')])
+        # Since all users can use the same order buttons now longer makes sense to have a finish button or display a specific user order
+        #finish = self.app.localization.get_text(lang, LocKeys.BTN_FINISH)
+        #keyboard.append([self._inline_btn(finish, f'{self.__finish_key}{user}')])
 
         return self._build_keyboard(keyboard)
 
@@ -59,7 +60,8 @@ class CmdOrder(Command):
         query.answer()
 
         args = self._get_inline_btn_args_from_query(query)
-        user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
+        #user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
+        user = self._get_username() # TODO: This one should be the good one. Test if it's working properly
         item = args[2]
         chat_id = self._get_chat_id()
         lang = self._get_user_lang()
@@ -78,7 +80,8 @@ class CmdOrder(Command):
         query.answer()
 
         args = self._get_inline_btn_args_from_query(query)
-        user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
+        #user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
+        user = self._get_username() # TODO: This one should be the good one. Test if it's working properly
         chat_id = self._get_chat_id()
         lang = self._get_user_lang()
 
