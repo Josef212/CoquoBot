@@ -19,23 +19,34 @@ class CmdOrder(Command):
         lang = self._get_user_lang()
 
         msg = self.get_cmd_msg(lang, user)
-        markup = self.build_order_keyboard(user, lang)
+        markup = self.build_order_keyboard_layout(user, lang)
 
         self._reply_message(msg, markup)
 
     def get_cmd_msg(self, lang: str, user: str) -> str:
         return self.app.localization.get_text_format(lang, LocKeys.ORDER_MSG, user)
 
-    def build_order_keyboard(self, user: str, lang: str):
+    def build_order_keyboard_layout(self, user: str, lang: str):
         # TODO: Must add pagination to this keyboard
         # TODO: As a simple solution could add two columns 
 
         keyboard = list()
         menu = self.app.menu
-        for item in menu.get_menu_list():
+        menu_list = menu.get_menu_list()
+        count = len(menu_list)
+
+        for i in range(0, count, 2):
             # TODO: Localize each item??
+            item = menu_list[i]
             cbk_data = f'{self.__key}{user}#{item}'
-            keyboard.append([self._inline_btn(item, cbk_data)])
+            row = [self._inline_btn(item, cbk_data)]
+
+            if i + 1 < count:
+                item = menu_list[i + 1]
+                cbk_data = f'{self.__key}{user}#{item}'
+                row.append(self._inline_btn(item, cbk_data))
+            
+            keyboard.append(row)
 
         finish = self.app.localization.get_text(lang, LocKeys.BTN_FINISH)
         keyboard.append([self._inline_btn(finish, f'{self.__finish_key}{user}')])

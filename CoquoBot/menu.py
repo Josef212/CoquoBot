@@ -30,7 +30,7 @@ class Menu:
         return URL
 
     def get_menu_list(self) -> list:
-        return self.menu.keys()
+        return list(self.menu.keys())
 
     def get_item_price(self, item: str) -> float:
         if item in self.menu:
