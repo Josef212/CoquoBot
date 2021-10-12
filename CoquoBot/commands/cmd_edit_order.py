@@ -127,7 +127,6 @@ class CmdEditOrder(Command):
                 user = user[1:]
 
             # TODO: Check if the user is on the chat
-            self.app.info(f'Found user {user} as argument to the command.')
             return user
         
         return None

@@ -31,6 +31,13 @@ CAT = {
     LocKeys.EDIT_ORDER_USER_ORDER: 'Modificant la comanda de @{0}',
     LocKeys.EDIT_ORDER_EMPTY: 'No s\'han afegit elements a la teva comanda. Utilitza [order] per iniciar una comanda',
 
+    # Cmd add order
+    LocKeys.ADD_ORDER_MISSING_ARGS: 'Nombre d\'arguments invàlid. És necessari un nom d\'usuari i un tall com a mínim.',
+    LocKeys.ADD_ORDER_ITEMS_ADDED: 'S\'ha demanat per @{0}',
+
+    # Cmd add order me
+    LocKeys.ADD_ORDER_ME_MISSING_ARGS: 'Nombre d\'arguments invàlid. És necessari un tall com a mínim.',
+
     # Btn
     LocKeys.BTN_MENU: 'Menú',
     LocKeys.BTN_WEB: 'Menú Web',
@@ -72,6 +79,13 @@ ES = {
     LocKeys.EDIT_ORDER_USER_ORDER: 'Modificando pedido de @{0}',
     LocKeys.EDIT_ORDER_EMPTY: 'No se han añadido elementos al pedido. Usa [order] para iniciar un pedido',
 
+    # Cmd add order
+    LocKeys.ADD_ORDER_MISSING_ARGS: 'Número de argumentos invalido. Se necesita un nombre de usuario y un trozo como mínimo',
+    LocKeys.ADD_ORDER_ITEMS_ADDED: 'Se ha pedido para @{0}',
+
+    # Cmd add order me
+    LocKeys.ADD_ORDER_ME_MISSING_ARGS: 'Número de argumentos invalido. Se necesita un trozo como mínimo',
+
     # Btn
     LocKeys.BTN_MENU: 'Menú',
     LocKeys.BTN_WEB: 'Menú Web',
@@ -112,6 +126,13 @@ EN = {
     LocKeys.EDIT_ORDER_TITLE_UPDATED: 'Order for @{0} has been updated:',
     LocKeys.EDIT_ORDER_USER_ORDER: 'Editing @{0}\'s order:',
     LocKeys.EDIT_ORDER_EMPTY: 'No items added yet. Use order command to place a fresh order',
+
+    # Cmd add order
+    LocKeys.ADD_ORDER_MISSING_ARGS: 'Invalid arg count. A username and at least one item is required',
+    LocKeys.ADD_ORDER_ITEMS_ADDED: 'Items added for @{0}',
+
+    # Cmd add order me
+    LocKeys.ADD_ORDER_ME_MISSING_ARGS: 'Invalid arg count. At least one item is required',
 
     # Btn
     LocKeys.BTN_MENU: 'Menu',

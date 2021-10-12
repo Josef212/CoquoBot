@@ -16,6 +16,7 @@ from commands.cmd_reset_order import *
 from commands.cmd_get_order import *
 from commands.cmd_order import *
 from commands.cmd_edit_order import *
+from commands.cmd_add_order import *
 
 class App(Updater):
     def __init__(self, token: str, logger: logging.Logger):
@@ -104,6 +105,8 @@ class App(Updater):
             CmdGetFullOrder(self),
             CmdOrder(self),
             CmdEditOrder(self),
+            CmdAddOrder(self),
+            CmdAddOrderMe(self),
         ]
 
 
