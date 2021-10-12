@@ -66,7 +66,10 @@ class CmdGetOrderFor(CmdGetOrderBase):
             self._reply_message(text)
             return
 
-        user = args[1] # TODO: Maybe need to remove start_with(@)
+        user = args[1]
+        if user[0] == '@':
+            user = user[1:]
+
         chat_id = self._get_chat_id()
 
         msg = self.get_user_order_text(chat_id, user, lang)

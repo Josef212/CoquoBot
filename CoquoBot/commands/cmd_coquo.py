@@ -29,7 +29,6 @@ class CmdCoquo(Command):
         lang = self._get_user_lang()
         args = self._get_inline_btn_args_from_query(query)
         chat_id = self._get_chat_id()
-        user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
         action = args[2]
 
         loc = self.app.localization

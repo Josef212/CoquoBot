@@ -22,7 +22,8 @@ class CmdEditOrder(Command):
         app.dispatcher.add_handler(CallbackQueryHandler(lambda u, c: self.__ignore_cbk(u, c), pattern=f'^{self.__ignore}'))
     
     def execute(self, update: Update, ctx) -> None:
-        user = self._get_username()
+        user = self.__try_get_user_from_args(update)
+        user = user if user != None else self._get_username()
         lang = self._get_user_lang()
         chat_id = self._get_chat_id()
 
@@ -109,3 +110,24 @@ class CmdEditOrder(Command):
         msg = get_order_cmd.format_order(full_order, title, lang)
 
         self._query_edit_message(query, msg, None)
+
+    def __try_get_user_from_args(self, update: Update) -> str:
+        query = update.callback_query
+        if query != None:
+            return None
+
+        args = update.message.text.split()
+        if len(args) >= 2:
+            # Will assume name is the first argument and ignore if more arguments are sent
+            user = args[1]
+            if len(user) == 0:
+                return None
+
+            if user[0] == '@':
+                user = user[1:]
+
+            # TODO: Check if the user is on the chat
+            self.app.info(f'Found user {user} as argument to the command.')
+            return user
+        
+        return None
