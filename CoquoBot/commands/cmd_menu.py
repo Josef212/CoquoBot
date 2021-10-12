@@ -9,7 +9,7 @@ class CmdWeb(Command):
     
     def execute(self, update: Update, ctx) -> None:
         url = self.app.menu.get_menu_web()
-        self.update_reply_message(update, url)
+        self._send_message(url)
 
 class CmdMenu(Command):
     def __init__(self, app):
@@ -18,11 +18,10 @@ class CmdMenu(Command):
     
     def execute(self, update: Update, ctx) -> None:
         msg = self.get_menu_text()
-        self.update_reply_message(update, msg)
+        self._send_message(msg)
 
     def get_menu_text(self) -> str:
         # TODO: Could localize the menu
-
         menu = self.app.menu
         menu_list = menu.get_menu_list()
 

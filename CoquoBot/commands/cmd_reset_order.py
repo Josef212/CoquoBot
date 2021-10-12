@@ -9,10 +9,10 @@ class CmdResetOrder(Command):
         self.name = ["reset"]
     
     def execute(self, update: Update, ctx) -> None:
-        chat_id = self.get_chat_id(update)
+        chat_id = self._get_chat_id()
         self.app.reset_order(chat_id)
 
-        lang = self.get_user_lang_from_update(update)
+        lang = self.get_user_lang()
         msg = self.app.localization.get_text(lang, LocKeys.ORDER_RESET_DONE)
 
-        self.update_reply_message(update, msg)
+        self._reply_message(msg)

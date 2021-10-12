@@ -22,14 +22,14 @@ class CmdEditOrder(Command):
         app.dispatcher.add_handler(CallbackQueryHandler(lambda u, c: self.__ignore_cbk(u, c), pattern=f'^{self.__ignore}'))
     
     def execute(self, update: Update, ctx) -> None:
-        user = self.get_username_from_update(update)
-        lang = self.get_user_lang_from_update(update)
-        chat_id = self.get_chat_id(update)
+        user = self._get_username()
+        lang = self._get_user_lang()
+        chat_id = self._get_chat_id()
 
         msg = self.get_cmd_msg(chat_id, lang, user)
         markup = self.build_edit_order_keyboard(chat_id, user, lang)
 
-        self.update_reply_message(update, msg, markup)
+        self._reply_message(msg, markup)
 
     def get_cmd_msg(self, chat_id: int, lang: str, user: str) -> str:
         has_order = self.app.user_has_any_order(chat_id, user)
@@ -56,53 +56,56 @@ class CmdEditOrder(Command):
             remove_cbk_data = f'{self.__key}{user}#{REMOVE_KEY}#{item}'
 
             keyboard.append([
-                self.inline_btn('-', remove_cbk_data),
-                self.inline_btn(msg, ignore_cbk_data),
-                self.inline_btn('+', add_cbk_data),
+                self._inline_btn('-', remove_cbk_data),
+                self._inline_btn(msg, ignore_cbk_data),
+                self._inline_btn('+', add_cbk_data),
             ])
         
         if len(keyboard) == 0:
             return None
         
         finish = loc.get_text(lang, LocKeys.BTN_FINISH)
-        keyboard.append([self.inline_btn(finish, f'{self.__finish}{user}')])
+        keyboard.append([self._inline_btn(finish, f'{self.__finish}{user}')])
 
-        return self.build_keyboard(keyboard)
+        return self._build_keyboard(keyboard)
 
     def __ignore_cbk(self, update: Update, ctx):
+        self._set_cmd_data(update, ctx)
         update.callback_query.answer()
     
     def __item_cbk(self, update: Update, ctx) -> None:
+        self._set_cmd_data(update, ctx)
         query = update.callback_query
         query.answer()
 
-        args = self.get_inline_btn_args_from_query(query)
+        args = self._get_inline_btn_args_from_query(query)
         user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
         mode = args[2]
         item = args[3]
         modifier = 1 if mode == ADD_KEY else -1
-        chat_id = self.get_chat_id(query)
-        lang = self.get_user_lang_from_query(query)
+        chat_id = self._get_chat_id()
+        lang = self._get_user_lang()
 
         self.app.add_to_order(chat_id, user, item, modifier)
 
         msg = self.get_cmd_msg(chat_id, lang, user)
         markup = self.build_edit_order_keyboard(chat_id, user, lang)
 
-        self.query_edit_message(query, msg, markup)
+        self._query_edit_message(query, msg, markup)
 
     def __finish_cbk(self, update: Update, ctx) -> None:
+        self._set_cmd_data(update, ctx)
         query = update.callback_query
         query.answer()
 
-        args = self.get_inline_btn_args_from_query(query)
+        args = self._get_inline_btn_args_from_query(query)
         user = args[1] # TODO: If we actually can get user that clicked we should get it and remove the user encoded on the cbk_data
-        chat_id = self.get_chat_id(query)
-        lang = self.get_user_lang_from_query(query)
+        chat_id = self._get_chat_id()
+        lang = self._get_user_lang()
 
         get_order_cmd = self.app.get_command('get_order_for')
         full_order = self.app.get_user_order(chat_id, user)
         title = self.app.localization.get_text_format(lang, LocKeys.EDIT_ORDER_TITLE_UPDATED, user)
         msg = get_order_cmd.format_order(full_order, title, lang)
 
-        self.query_edit_message(query, msg, None)
+        self._query_edit_message(query, msg, None)

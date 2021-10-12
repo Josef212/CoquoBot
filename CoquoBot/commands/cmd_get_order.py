@@ -51,26 +51,26 @@ class CmdGetOrderFor(CmdGetOrderBase):
 
     def execute(self, update: Update, ctx) -> None:
         loc = self.app.localization
-        lang = self.get_user_lang_from_update(update)
+        lang = self._get_user_lang()
 
         args = update.message.text.split()
         arg_count = len(args)
 
         if arg_count < 2:
             text = loc.get_text(lang, LocKeys.GET_ORDER_MISSING_ARGS)
-            self.update_reply_message(update, text)
+            self._reply_message(text)
             return
 
         if arg_count > 2:
             text = loc.get_text(lang, LocKeys.GET_ORDER_TOO_MUCH_ARGS)
-            self.update_reply_message(update, text)
+            self._reply_message(text)
             return
 
         user = args[1] # TODO: Maybe need to remove start_with(@)
-        chat_id = self.get_chat_id(update)
+        chat_id = self._get_chat_id()
 
         msg = self.get_user_order_text(chat_id, user, lang)
-        self.update_reply_message(update, msg)
+        self._send_message(msg)
 
 class CmdGetMyOrder(CmdGetOrderBase):
     def __init__(self, app):
@@ -78,12 +78,12 @@ class CmdGetMyOrder(CmdGetOrderBase):
         self.name = ["get_my_order"]
     
     def execute(self, update: Update, ctx) -> None:
-        chat_id = self.get_chat_id(update)
-        user = self.get_username_from_update(update)
-        lang = self.get_user_lang_from_update(update)
+        chat_id = self._get_chat_id()
+        user = self._get_username()
+        lang = self._get_user_lang()
 
         msg = self.get_user_order_text(chat_id, user, lang)
-        self.update_reply_message(update, msg)
+        self._send_message(msg)
 
 class CmdGetFullOrder(CmdGetOrderBase):
     def __init__(self, app):
@@ -91,8 +91,8 @@ class CmdGetFullOrder(CmdGetOrderBase):
         self.name = ["get_full_order"]
     
     def execute(self, update: Update, ctx) -> None:
-        chat_id = self.get_chat_id(update)
-        lang = self.get_user_lang_from_update(update)
+        chat_id = self._get_chat_id()
+        lang = self._get_user_lang()
 
         msg = self.get_full_order_text(chat_id, lang)
-        self.update_reply_message(update, msg)
+        self._send_message(msg)
