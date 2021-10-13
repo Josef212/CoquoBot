@@ -18,10 +18,14 @@ CAT = {
     LocKeys.GET_ORDER_MISSING_ARGS: 'Nombre d\'arguments invàlid. Falta el nom de l\'usuari',
     LocKeys.GET_ORDER_TOO_MUCH_ARGS: 'Nombre d\'arguments invàlid. Massa arguments, només és necessari el nom d\'usuari',
 
+    # Cmd get order divided
+    LocKeys.GET_ORDER_DIVIDED_TITLE: 'Comanda completa dividida',
+    LocKeys.GET_ORDER_DIVIDED_USER_ORDER: 'Comanda de @{0}',
+
     # Cmd order
     LocKeys.ORDER_FINISH_TITLE: 'Comanda per @{0} registrada:',
     LocKeys.ORDER_MSG: 'Selecciona talls per afegir-los a la teva comanda',
-    LocKeys.ORDER_ITEM_ADDED: '{0} afegit a la comanda',
+    LocKeys.ORDER_ITEM_ADDED: '{0} afegit a @{1}',
 
     # Cmd reset order 
     LocKeys.ORDER_RESET_DONE: 'La comanda per aquest grup s\'ha reiniciat.',
@@ -44,9 +48,10 @@ CAT = {
     # Btn
     LocKeys.BTN_MENU: 'Menú',
     LocKeys.BTN_WEB: 'Menú Web',
-    LocKeys.BTN_ORDER: 'Fer comanda',
+    LocKeys.BTN_ORDER: 'Demanar',
     LocKeys.BTN_EDIT_ORDER: 'Modificar comanda',
-    LocKeys.BTN_GET_FULL_ORDER: 'Llista completa',
+    LocKeys.BTN_DIVIDED_ORDER: 'Comanda completa',
+    LocKeys.BTN_GET_FULL_ORDER: 'Comanda completa',
     LocKeys.BTN_GET_MY_ORDER: 'La meva comanda',
     LocKeys.BTN_FINISH: 'Tancar :)',
 
@@ -58,7 +63,7 @@ ES = {
     LocKeys.START_MSG: 'Arrancando el bot...',
 
     # Cmd coquo
-    LocKeys.COQUO_OPTIONS: '¿Como CoquoBot te puede ayudar?',
+    LocKeys.COQUO_OPTIONS: '¿Cómo CoquoBot te puede ayudar?',
     LocKeys.COQUO_FINISHED: 'Gracias por usar CoquoBot :D',
 
     # Cmd get order
@@ -69,10 +74,14 @@ ES = {
     LocKeys.GET_ORDER_MISSING_ARGS: 'Número de argumentos invalido. Falta el nombre de usuario',
     LocKeys.GET_ORDER_TOO_MUCH_ARGS: 'Número de argumentos invalido. Demasiados argumentos, sólo es necesario el nombre del usuario',
 
+    # Cmd get order divided
+    LocKeys.GET_ORDER_DIVIDED_TITLE: 'Pedido completo dividido',
+    LocKeys.GET_ORDER_DIVIDED_USER_ORDER: 'Pedido de @{0}',
+
     # Cmd order
     LocKeys.ORDER_FINISH_TITLE: 'Comanda para @{0} registrada:',
     LocKeys.ORDER_MSG: 'Selecciona trozos para añadirlos a tu pedido',
-    LocKeys.ORDER_ITEM_ADDED: '{0} añadido a la comanda',
+    LocKeys.ORDER_ITEM_ADDED: '{0} añadido a @{1}',
 
     # Cmd reset order 
     LocKeys.ORDER_RESET_DONE: 'El pedido para este grupo se ha reiniciado',
@@ -95,9 +104,10 @@ ES = {
     # Btn
     LocKeys.BTN_MENU: 'Menú',
     LocKeys.BTN_WEB: 'Menú Web',
-    LocKeys.BTN_ORDER: 'Hacer pedido',
+    LocKeys.BTN_ORDER: 'Pedir',
     LocKeys.BTN_EDIT_ORDER: 'Modificar pedido',
-    LocKeys.BTN_GET_FULL_ORDER: 'Lista completa',
+    LocKeys.BTN_DIVIDED_ORDER: 'Pedido completo',
+    LocKeys.BTN_GET_FULL_ORDER: 'Pedido completo',
     LocKeys.BTN_GET_MY_ORDER: 'Mi pedido',
     LocKeys.BTN_FINISH: 'Cerrar :)',
 
@@ -120,10 +130,14 @@ EN = {
     LocKeys.GET_ORDER_MISSING_ARGS: 'Invalid arg count. Missing user\'s name',
     LocKeys.GET_ORDER_TOO_MUCH_ARGS: 'Invalid arg count. Too many argumanets, only username is needed',
 
+    # Cmd get order divided
+    LocKeys.GET_ORDER_DIVIDED_TITLE: 'Divided full order',
+    LocKeys.GET_ORDER_DIVIDED_USER_ORDER: 'Order for @{0}',
+
     # Cmd order
     LocKeys.ORDER_FINISH_TITLE: 'Order for @{0} registered:',
     LocKeys.ORDER_MSG: 'Click to add items to your cart',
-    LocKeys.ORDER_ITEM_ADDED: '{0} added to cart',
+    LocKeys.ORDER_ITEM_ADDED: '{0} added to @{1}',
 
     # Cmd reset order 
     LocKeys.ORDER_RESET_DONE: 'Order for this chat has been reset, cart now is empty.',
@@ -148,9 +162,10 @@ EN = {
     LocKeys.BTN_WEB: 'Web menu',
     LocKeys.BTN_ORDER: 'Place order',
     LocKeys.BTN_EDIT_ORDER: 'Edit order',
+    LocKeys.BTN_DIVIDED_ORDER: 'Full order',
     LocKeys.BTN_GET_FULL_ORDER: 'Full order',
     LocKeys.BTN_GET_MY_ORDER: 'My order',
-    LocKeys.BTN_FINISH: 'Finish :)',
+    LocKeys.BTN_FINISH: 'Close :)',
 
     LocKeys.BTN_RESET_ORDER: '-Reset full order-',
 }
