@@ -67,7 +67,7 @@ class CmdOrder(Command):
         lang = self._get_user_lang()
 
         current_text = query.message.text
-        text = self.app.localization.get_text_format(lang, LocKeys.ORDER_ITEM_ADDED, item)
+        text = self.app.localization.get_text_format(lang, LocKeys.ORDER_ITEM_ADDED, item, user)
         current_text += f'\n  - {text}'
 
         self.app.add_to_order(chat_id, user, item, 1)

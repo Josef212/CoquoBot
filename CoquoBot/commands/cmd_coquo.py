@@ -50,6 +50,8 @@ class CmdCoquo(Command):
             self._execute_command('get_my_order')
         elif action == LocKeys.BTN_GET_FULL_ORDER:
             self._execute_command('get_full_order')
+        elif action == LocKeys.BTN_DIVIDED_ORDER:
+            self._execute_command('get_full_order_div')
         elif action == LocKeys.BTN_FINISH:
             msg = loc.get_text(lang, LocKeys.COQUO_FINISHED)
             self._query_edit_message(query, msg, None)
@@ -60,17 +62,18 @@ class CmdCoquo(Command):
 
         keyboard = [
             [
-                self._inline_btn(f'📖 {loc.get_text(lang, LocKeys.BTN_MENU)}', f'{key}{user}#{LocKeys.BTN_MENU}'),
-                self._inline_btn(f'🌐 {loc.get_text(lang, LocKeys.BTN_WEB)}', f'{key}{user}#{LocKeys.BTN_WEB}'),
-                #self.inline_btn(loc.get_text(LocKeys.BTN_RESET_ORDER), f'{key}{user}#{LocKeys.BTN_RESET_ORDER}')
-            ],
-            [
                 self._inline_btn(f'🍕 {loc.get_text(lang, LocKeys.BTN_ORDER)}', f'{key}{user}#{LocKeys.BTN_ORDER}'),
                 self._inline_btn(f'📑 {loc.get_text(lang, LocKeys.BTN_EDIT_ORDER)}', f'{key}{user}#{LocKeys.BTN_EDIT_ORDER}')
             ],
             [
                 self._inline_btn(f'🛒 {loc.get_text(lang, LocKeys.BTN_GET_MY_ORDER)}', f'{key}{user}#{LocKeys.BTN_GET_MY_ORDER}'),
-                self._inline_btn(f'📜 {loc.get_text(lang, LocKeys.BTN_GET_FULL_ORDER)}', f'{key}{user}#{LocKeys.BTN_GET_FULL_ORDER}')
+                self._inline_btn(f'📜 {loc.get_text(lang, LocKeys.BTN_DIVIDED_ORDER)}', f'{key}{user}#{LocKeys.BTN_DIVIDED_ORDER}'),
+                #self._inline_btn(f'📜 {loc.get_text(lang, LocKeys.BTN_GET_FULL_ORDER)}', f'{key}{user}#{LocKeys.BTN_GET_FULL_ORDER}'),
+            ],
+            [
+                self._inline_btn(f'📖 {loc.get_text(lang, LocKeys.BTN_MENU)}', f'{key}{user}#{LocKeys.BTN_MENU}'),
+                self._inline_btn(f'🌐 {loc.get_text(lang, LocKeys.BTN_WEB)}', f'{key}{user}#{LocKeys.BTN_WEB}'),
+                #self.inline_btn(loc.get_text(LocKeys.BTN_RESET_ORDER), f'{key}{user}#{LocKeys.BTN_RESET_ORDER}')
             ],
             [
                 self._inline_btn(f'❎ {loc.get_text(lang, LocKeys.BTN_FINISH)}', f'{key}{user}#{LocKeys.BTN_FINISH}')

@@ -7,7 +7,7 @@ from menu import Menu
 from localization import Localization
 
 from telegram import Update
-from telegram.ext import Updater, MessageHandler, Filters
+from telegram.ext import Updater, CallbackContext, MessageHandler, Filters
 
 from commands.cmd_start import *
 from commands.cmd_coquo import *
@@ -17,6 +17,8 @@ from commands.cmd_get_order import *
 from commands.cmd_order import *
 from commands.cmd_edit_order import *
 from commands.cmd_add_order import *
+from commands.cmd_help import *
+from commands.cmd_info import *
 
 class App(Updater):
     def __init__(self, token: str, logger: logging.Logger):
@@ -58,7 +60,7 @@ class App(Updater):
     def error(self, msg: str) -> None:
         self.log.error(msg)
 
-    def __error_handler(self, update: Update, ctx) -> None:
+    def __error_handler(self, update: Update, ctx: CallbackContext) -> None:
         self.warn(f'Update {update.message.text} caused error:\n  {ctx.error}')
     
     def __echo(self, update: Update, ctx):
@@ -107,6 +109,9 @@ class App(Updater):
             CmdEditOrder(self),
             CmdAddOrder(self),
             CmdAddOrderMe(self),
+            CmdHelp(self),
+            CmdInfo(self),
+            CmdGetFullOrderDivided(self),
         ]
 
 

@@ -99,3 +99,50 @@ class CmdGetFullOrder(CmdGetOrderBase):
 
         msg = self.get_full_order_text(chat_id, lang)
         self._send_message(msg)
+
+class CmdGetFullOrderDivided(Command):
+    def __init__(self, app):
+        super().__init__(app)
+        self.name = ["get_full_order_div"]
+    
+    def execute(self, update: Update, ctx) -> None:
+        chat_id = self._get_chat_id()
+        lang = self._get_user_lang()
+        order = self.app.get_order(chat_id)
+
+        menu = self.app.menu
+        loc = self.app.localization
+
+        title = loc.get_text(lang, LocKeys.GET_ORDER_DIVIDED_TITLE)
+        msg = f'{title}:'
+        total_price = 0.0
+
+        for user in order.order:
+            user_text = loc.get_text_format(lang, LocKeys.GET_ORDER_DIVIDED_USER_ORDER, user)
+            msg += f'\n  {user_text}:\n'
+            
+            user_order = order.order[user]
+            user_cost = 0.0
+            missing_any_price = False
+
+            for item in user_order:
+                amount = user_order[item]
+                price = menu.get_item_price(item) * amount
+                msg += f'    - {amount}x {item}. ({price}€ / 1)\n'
+            
+                if price == 0.0:
+                    missing_any_price = True
+                
+                user_cost += price
+                total_price += price
+            
+            msg += f'  Total: {user_cost}€\n'
+        
+        if missing_any_price:
+            missing_text = loc.get_text(lang, LocKeys.GET_ORDER_MISSING_PRICE)
+            msg += f'\n {missing_text}\n'
+
+        total_price_text = loc.get_text(lang, LocKeys.GET_ORDER_TOTAL_PRICE)
+        msg += f'\n{total_price_text}: {total_price}€'
+
+        self._send_message(msg)

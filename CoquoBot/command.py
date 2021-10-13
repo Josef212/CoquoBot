@@ -39,7 +39,8 @@ class Command(metaclass=abc.ABCMeta):
     
     def _get_username(self) -> str:
         query = self.__update.callback_query
-        return self.__update.message.from_user.username if query == None else query.from_user.username
+        user = self.__update.message.from_user if query == None else query.from_user
+        return user.username if user.username != None else f'{user.first_name} {user.last_name}'
     
     def _get_user_lang(self) -> str:
         query = self.__update.callback_query
