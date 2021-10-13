@@ -20,7 +20,7 @@ CAT = {
 
     # Cmd order
     LocKeys.ORDER_FINISH_TITLE: 'Comanda per @{0} registrada:',
-    LocKeys.ORDER_MSG: 'Demanant per @{0}:',
+    LocKeys.ORDER_MSG: 'Selecciona talls per afegir-los a la teva comanda',
     LocKeys.ORDER_ITEM_ADDED: '{0} afegit a la comanda',
 
     # Cmd reset order 
@@ -37,6 +37,9 @@ CAT = {
 
     # Cmd add order me
     LocKeys.ADD_ORDER_ME_MISSING_ARGS: 'Nombre d\'arguments invàlid. És necessari un tall com a mínim.',
+
+    # Cmd info
+    LocKeys.INFO_SCHEDULE: 'Horari: Dimecres a Diumenge 19:00 to 24:00',
 
     # Btn
     LocKeys.BTN_MENU: 'Menú',
@@ -68,7 +71,7 @@ ES = {
 
     # Cmd order
     LocKeys.ORDER_FINISH_TITLE: 'Comanda para @{0} registrada:',
-    LocKeys.ORDER_MSG: 'Pidiendo para @{0}:',
+    LocKeys.ORDER_MSG: 'Selecciona trozos para añadirlos a tu pedido',
     LocKeys.ORDER_ITEM_ADDED: '{0} añadido a la comanda',
 
     # Cmd reset order 
@@ -85,6 +88,9 @@ ES = {
 
     # Cmd add order me
     LocKeys.ADD_ORDER_ME_MISSING_ARGS: 'Número de argumentos invalido. Se necesita un trozo como mínimo',
+
+    # Cmd info
+    LocKeys.INFO_SCHEDULE: 'Horario: Miercoles a Domingo 19:00 to 24:00',
 
     # Btn
     LocKeys.BTN_MENU: 'Menú',
@@ -116,7 +122,7 @@ EN = {
 
     # Cmd order
     LocKeys.ORDER_FINISH_TITLE: 'Order for @{0} registered:',
-    LocKeys.ORDER_MSG: 'Ordering for @{0}:',
+    LocKeys.ORDER_MSG: 'Click to add items to your cart',
     LocKeys.ORDER_ITEM_ADDED: '{0} added to cart',
 
     # Cmd reset order 
@@ -133,6 +139,9 @@ EN = {
 
     # Cmd add order me
     LocKeys.ADD_ORDER_ME_MISSING_ARGS: 'Invalid arg count. At least one item is required',
+
+    # Cmd info
+    LocKeys.INFO_SCHEDULE: 'Schedule: Wednesday to Sunday 19:00 to 24:00',
 
     # Btn
     LocKeys.BTN_MENU: 'Menu',

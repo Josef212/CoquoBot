@@ -34,6 +34,9 @@ class LocKeys:
     # Cmd add order me
     ADD_ORDER_ME_MISSING_ARGS='ADD_ORDER_ME_MISSING_ARGS'
 
+    # Cmd info
+    INFO_SCHEDULE='INFO_SCHEDULE'
+
     # Btn
     BTN_MENU='BTN_MENU'
     BTN_WEB='BTN_WEB'

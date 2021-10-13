@@ -24,7 +24,7 @@ class CmdOrder(Command):
         self._reply_message(msg, markup)
 
     def get_cmd_msg(self, lang: str, user: str) -> str:
-        return self.app.localization.get_text_format(lang, LocKeys.ORDER_MSG, user)
+        return self.app.localization.get_text_format(lang, LocKeys.ORDER_MSG)
 
     def build_order_keyboard_layout(self, user: str, lang: str):
         # TODO: Must add pagination to this keyboard
