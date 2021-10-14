@@ -45,13 +45,15 @@ class App(Updater):
         self.__inited = True
 
     def run(self) -> None:
-        #self.start_polling()
+        if self.port == -1:
+            self.info(f'Starting on poll mode')
+            self.start_polling()
+        else:
+            self.info(f'Starting with webhooks')
+            url = f'https://coquo-bot.herokuapp.com/{self.token}'
+            self.info(f'url: {url}')
 
-        self.info(f'Used port: {self.port}')
-
-        url = f'https://coquo-bot.herokuapp.com/{self.token}'
-        self.start_webhook(listen="0.0.0.0", port=self.port, url_path=self.token, webhook_url=url)
-        #self.bot.set_webhook(f'https://coquo-bot.herokuapp.com/{self.token}')
+            self.start_webhook(listen="0.0.0.0", port=self.port, url_path=self.token, webhook_url=url)
 
         self.idle()
 
@@ -129,7 +131,11 @@ def main():
     logger = logging.getLogger(__name__)
 
     token = str(os.environ.get('TELEGRAM_TOKEN', ''))
-    port = int(os.environ.get('TELEGRAM_PORT', 83))
+    port = int(os.environ.get('TELEGRAM_PORT', -1))
+
+    if token == '' and len(sys.argv) >= 2:
+        print('Using token from args')
+        token = str(sys.argv[1])
 
     app = App(token, port, logger)
     app.set_up()
