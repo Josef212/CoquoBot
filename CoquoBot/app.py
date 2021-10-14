@@ -46,6 +46,9 @@ class App(Updater):
 
     def run(self) -> None:
         #self.start_polling()
+
+        logger.info(f'Used port: {self.port}')
+
         self.start_webhook(listen="0.0.0.0", port=self.port, url_path=self.token)
         self.bot.setWebhook(f'http://coquo-bot.herokuapp.com/{self.token}')
 
