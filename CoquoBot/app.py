@@ -50,7 +50,7 @@ class App(Updater):
         self.info(f'Used port: {self.port}')
 
         self.start_webhook(listen="0.0.0.0", port=self.port, url_path=self.token)
-        self.bot.setWebhook(f'http://coquo-bot.herokuapp.com/{self.token}')
+        self.bot.set_webhook(f'https://coquo-bot.herokuapp.com/{self.token}')
 
         self.idle()
 
