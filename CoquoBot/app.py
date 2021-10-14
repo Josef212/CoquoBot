@@ -21,8 +21,10 @@ from commands.cmd_help import *
 from commands.cmd_info import *
 
 class App(Updater):
-    def __init__(self, token: str, logger: logging.Logger):
+    def __init__(self, token: str, port: int, logger: logging.Logger):
         super().__init__(token=token, use_context=True)
+        self.token = token
+        self.port = port
         self.log = logger
         self.info('# App init -----------')
 
@@ -43,7 +45,10 @@ class App(Updater):
         self.__inited = True
 
     def run(self) -> None:
-        self.start_polling()
+        #self.start_polling()
+        self.start_webhook(listen="0.0.0.0", port=self.port, url_path=self.token)
+        self.bot.setWebhook(f'http://coquo-bot.herokuapp.com/{self.token}')
+
         self.idle()
 
     def add_command(self, cmd: Command) -> None:
@@ -120,8 +125,9 @@ def main():
     logger = logging.getLogger(__name__)
 
     token = str(os.environ.get('TELEGRAM_TOKEN', ''))
+    port = int(os.environ(.get('PORT', 5000))
 
-    app = App(token, logger)
+    app = App(token, port, logger)
     app.set_up()
     app.run()
 
