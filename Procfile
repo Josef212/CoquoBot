@@ -1,1 +1,1 @@
-web: python3 CoquoBot/app.py
+worker: python3 CoquoBot/app.py
