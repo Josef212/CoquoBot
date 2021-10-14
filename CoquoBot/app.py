@@ -1,5 +1,5 @@
+import sys, os
 import logging
-import credentials
 
 from order import Order
 from order_manager import OrderManager
@@ -119,7 +119,9 @@ def main():
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
     logger = logging.getLogger(__name__)
 
-    app = App(credentials.TOKEN, logger)
+    token = str(os.environ.get('TELEGRAM_TOKEN', ''))
+
+    app = App(token, logger)
     app.set_up()
     app.run()
 
