@@ -128,7 +128,7 @@ def main():
     logger = logging.getLogger(__name__)
 
     token = str(os.environ.get('TELEGRAM_TOKEN', ''))
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('TELEGRAM_PORT', 83))
 
     app = App(token, port, logger)
     app.set_up()
