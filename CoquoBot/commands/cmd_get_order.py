@@ -116,6 +116,7 @@ class CmdGetFullOrderDivided(Command):
         title = loc.get_text(lang, LocKeys.GET_ORDER_DIVIDED_TITLE)
         msg = f'{title}:'
         total_price = 0.0
+        missing_any_price = False
 
         for user in order.order:
             user_text = loc.get_text_format(lang, LocKeys.GET_ORDER_DIVIDED_USER_ORDER, user)
