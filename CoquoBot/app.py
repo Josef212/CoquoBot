@@ -41,7 +41,7 @@ class App(Updater):
 
         for cmd in self.__cmds:
             self.dispatcher.add_handler(cmd.get_command())
-        
+
         self.__inited = True
 
     def run(self) -> None:
@@ -64,7 +64,7 @@ class App(Updater):
 
     def info(self, msg: str) -> None:
         self.log.info(msg)
-    
+
     def warn(self, msg: str) -> None:
         self.log.warning(msg)
 
@@ -73,38 +73,38 @@ class App(Updater):
 
     def __error_handler(self, update: Update, ctx: CallbackContext) -> None:
         self.warn(f'Update {update.message.text} caused error:\n  {ctx.error}')
-    
+
     def __echo(self, update: Update, ctx):
         update.message.reply_text(update.message.text)
-    
+
     def get_order(self, chat_id: int) -> Order:
         return self.__order_manager.get_order(chat_id)
-    
+
     def reset_order(self, chat_id: int) -> None:
         self.__order_manager.reset_order(chat_id)
 
     def add_to_order(self, chat_id: int, user: str, item: str, amount: int) -> None:
         self.__order_manager.get_order(chat_id).add_to_order(user, item, amount)
-    
+
     def user_has_any_order(self, chat_id: int, user: str) -> bool:
         return self.__order_manager.user_has_any_order(chat_id, user)
 
     def get_user_order(self, chat_id: int, user: str) -> dict:
         return self.__order_manager.get_order(chat_id).get_user_order(self.menu, user)
-    
+
     def get_full_order(self, chat_id: int) -> dict:
         return self.__order_manager.get_order(chat_id).get_full_order(self.menu)
-    
+
     def get_all_commands(self) -> list:
         return self.__cmds
-    
+
     def get_command(self, cmd_name: str) -> Command:
         for cmd in self.__cmds:
             if cmd.name == cmd_name or cmd_name in cmd.name:
                 return cmd
-            
+
         return None
-    
+
     def __create_commands(self) -> None:
         # Probably with decorators I could get all commands instead of manually adding them
         self.__cmds = [

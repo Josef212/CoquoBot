@@ -12,7 +12,7 @@ class CmdResetOrder(Command):
         chat_id = self._get_chat_id()
         self.app.reset_order(chat_id)
 
-        lang = self.get_user_lang()
+        lang = self._get_user_lang()
         msg = self.app.localization.get_text(lang, LocKeys.ORDER_RESET_DONE)
 
         self._reply_message(msg)
