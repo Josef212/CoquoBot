@@ -6,12 +6,12 @@ BASE_MENU = {
     'Bbq': 2.50,
     'PolloCurry': 2.50,
     'Carabassó': 2.50,
-    'Xampinyons': 2.25,
-    'Llonganissa': 2.25,
-    'Margarita': 2.25,
+    'Xampinyons': 2.50,
+    'Llonganissa': 2.50,
+    'Margarita': 2.50,
     'Pepperoni': 2.50,
     'Nutella': 2.50,
-    'Patata': 2.25,
+    'Patata': 2.50,
     'FormatgesAmbPera': 2.50,
     'Botifarra': 2.50,
     'Carbonara': 2.50,
@@ -42,5 +42,5 @@ class Menu:
         if item in self.menu:
             return self.menu[item]
 
-        self.app.warn(f"Error trying to get cut of {item} price")
+        self.app.warn(f"Error trying to get a cut of {item} price")
         return 0.0
